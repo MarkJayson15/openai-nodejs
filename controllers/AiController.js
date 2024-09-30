@@ -6,21 +6,7 @@ const openai = new OpenAI({
 });
 const speechFile = path.resolve("./speech.mp3");
 
-const generateText = async (req, res) => {
-  const { prompt, model } = req.body;
-  try {
-    const completion = await openai.chat.completions.create({
-        messages: [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
-        ],
-        model: model,
-      });
-    return res.json({ result: completion.choices[0] });
-  } catch (error) {
-    console.log(error)
-  }
-};
+
 
 const generateImage = async (req, res) => {
   const { prompt, model } = req.body;
